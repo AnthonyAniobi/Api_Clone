@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "api_clone"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name="Anthony Aniobi", email="anthonyaniobi198@gmail.com" },
 ]
@@ -15,6 +15,10 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+]
+dependencies = [
+    'requests',
+    'PIL',
 ]
 
 [project.urls]

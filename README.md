@@ -48,8 +48,9 @@ downloader.downloadImagesAtKey(key_name='name of image key', folder_name='folder
 | field | type | Default | description |
 |-------|-------|-----|--------|
 | map | `dict`| `None`| json response|
-| folder_name | `str`|`images`| name of the folder where your images are saved|
+| folder_name | `str`|`images`| name of the folder where your images are saved |
 | image_format | `ImageFormat`|`ImageFormat.jpg`| format to save the image ie. `png`, `jpg`, `jpeg`|
+| view_log | `bool` | `True` | view logs from actions on each method
 
 ## Features
 - Download all network images referenced from a json file

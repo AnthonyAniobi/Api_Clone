@@ -4,6 +4,8 @@ import os
 
 import requests
 
+from api_clone.enums import ImageFormat
+
 def saveImage(image_url:str, folder_name:str='images', image_format:ImageFormat=ImageFormat.JPG, view_log:bool=True, image_name:str|None=None)->str|None:
     '''Save an image from Url'''
     response = requests.get(image_url)

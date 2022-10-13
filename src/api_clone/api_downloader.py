@@ -63,9 +63,3 @@ class ApiDownloader:
             print('Completed!')
 
 
-class ImageFormat(Enum):
-    PNG='png'
-    JPG='jpg'
-    JPEG='jpeg'
-
-        

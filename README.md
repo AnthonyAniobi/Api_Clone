@@ -7,7 +7,11 @@
 
 A script to save all data from an api response locally
 
-
+## Usage
+import the api_downloader module using 
+```
+pip install api_clone
+```
 
 ## Features
 - Download all network images referenced from a json file

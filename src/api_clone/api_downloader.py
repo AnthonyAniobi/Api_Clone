@@ -1,10 +1,7 @@
 from enum import Enum
-from io import BytesIO
-from PIL import Image
 import json
-import os
 
-import requests
+from .save_image import saveImage
 
 class ApiDownloader:
 
@@ -51,27 +48,6 @@ class ApiDownloader:
         else:
             pass
 
-    def saveImage(self, image_url:str, image_name:str|None=None)->str|None:
-        '''Save an image from Url'''
-        response = requests.get(image_url)
-        
-        if image_name is None:
-            image_name = image_url.split('/')[-1]
-            image_name = image_name.split('.')[0]
-        
-        if response.status_code == 200:
-            if not os.path.isdir(self.folder_name):
-                if self.view_log:
-                    print(f'creating folder => {self.folder_name}')
-                os.mkdir(self.folder_name)
-            img = Image.open(BytesIO(response.content))
-            img.save(f'{self.folder_name}/{image_name}.{self.image_format}')
-            if self.view_log:
-                print(f'Saved image as => {image_name} !')
-        else:
-            if self.view_log:
-                print(f'Couldn\'t get image \nCheck your internet connection!')
-
     def downloadImagesAtKey(self, key_name:str, folder_name:str|None=None):
         '''Scrape a json file and download all images with the key_name you specify'''
         if self.view_log:
@@ -92,24 +68,4 @@ class ImageFormat(Enum):
     JPG='jpg'
     JPEG='jpeg'
 
-def saveImage(image_url:str, folder_name:str='images', image_format:ImageFormat=ImageFormat.JPG, view_log:bool=True, image_name:str|None=None)->str|None:
-    '''Save an image from Url'''
-    response = requests.get(image_url)
-    
-    if image_name is None:
-        image_name = image_url.split('/')[-1]
-        image_name = image_name.split('.')[0]
-    
-    if response.status_code == 200:
-        if not os.path.isdir(folder_name):
-            if view_log:
-                print(f'creating folder => {folder_name}')
-            os.mkdir(folder_name)
-        img = Image.open(BytesIO(response.content))
-        img.save(f'{folder_name}/{image_name}.{image_format}')
-        if view_log:
-            print(f'Saved image as => {image_name} !')
-    else:
-        if view_log:
-            print(f'Couldn\'t get image \nCheck your internet connection!')
         

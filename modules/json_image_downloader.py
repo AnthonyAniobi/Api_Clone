@@ -24,22 +24,30 @@ def imageDownloader(image_url:str, file_format:str='jpg', image_folder:str='imag
   
 
 def jsonImageDownloader(json:dict, image_path:str='images', file_format:str='jpeg')->None:
-    
-    if not os.path.isdir(image_path):
-        os.mkdir(image_path)
-    
-    
 
-    def __jsonScraper(data):
+    def __jsonScraper(data:dict|list|str|int):
         if data is dict:
             for key in data.keys:
+                print('dict')
                 __jsonScraper(data[key])
         elif data is list:
+            print('list')
             for val in data:
                 __jsonScraper(data)
         else:
+            print('other')
             if data.split('.')[0].lower() in ('png', 'jpg', 'jpeg'):
-                imageDownloader(data, file_format, image_path)
+                # imageDownloader(data, file_format, image_path)
+                print(f'found in data: {data}')
+            else:
+                print(f'not found in data: {data}')
+
+
+    if not os.path.isdir(image_path):
+        os.mkdir(image_path)
+    
+    __jsonScraper(dict)
+
 
 
 if __name__ == "__main__":
@@ -71,4 +79,22 @@ if __name__ == "__main__":
         ]
     }
 
-    jsonImageDownloader(test_result, 'test_images', '.png')
+    def jsonScraper(data:dict|list|str):
+        if type(data) is dict:
+            for key,value in data.items():
+                jsonScraper(value)
+        elif type(data) is list:
+            for val in data:
+                jsonScraper(val)
+        else:
+            if type(data) is str:
+                if data.split('.')[-1].lower() in ('png', 'jpg', 'jpeg'):
+                    # imageDownloader(data, file_format, image_path)
+                    print(f'found in data: {data}')
+                else:
+                    print(f'not found in data: {data}')
+
+
+    # jsonImageDownloader(test_result, 'test_images', '.png')
+    jsonScraper(test_result)
+    # print(type([1,2,3]))

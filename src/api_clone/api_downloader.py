@@ -63,3 +63,7 @@ class ApiDownloader:
             print('Completed!')
 
 
+if __name__ == "__main__":
+    json_data = {'name': 'Anthony', 'images':['www.something.jpg', 'www.another.jpg']}
+    response = json.dumps(json_data)
+    api_downloader = ApiDownloader(response)

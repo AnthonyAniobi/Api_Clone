@@ -4,6 +4,7 @@
 ![forks](https://img.shields.io/github/forks/AnthonyAniobi/Api_Clone)
 ![stars](https://img.shields.io/github/stars/AnthonyAniobi/Api_Clone)
 ![license](https://img.shields.io/github/license/AnthonyAniobi/Api_Clone)
+[![PyPI version](https://badge.fury.io/py/api-clone.svg)](https://pypi.org/project/api-clone/)
 
 This is a utility project that helps you download files attached to an api response and save them locally. It also includes method for downloading network images to your local storage.
 
